@@ -4,6 +4,10 @@ const todoRoutes = require('./routes/todo.routes');
 
 const app = express();
 
+const mongoDB = require('./mongodb/mongodb.connect');
+
+mongoDB.connect();
+
 app.use(express.json());
 
 app.use('/todos', todoRoutes);
@@ -11,9 +15,5 @@ app.use('/todos', todoRoutes);
 app.get('/', (req, res) => {
   res.json('Hello World!');
 });
-
-// app.listen(3000, () => {
-//   console.log('SERVER IS NOW RUNNING!');
-// });
 
 module.exports = app;
